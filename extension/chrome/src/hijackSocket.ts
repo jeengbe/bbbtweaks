@@ -2,13 +2,13 @@ const _WebSocket = window.WebSocket;
 
 const replaceSocket = () => {
   const WebSocket = function (url: string, protocols?: string | string[]): WebSocket {
-    console.log("Open connection: ", url)
+    console.log("Open connection: ", url);
     const socket = new _WebSocket(url, protocols);
     const socketSend = socket.send.bind(socket);
     socket.send = msg => {
       console.log("Send: ", msg);
       return socketSend(msg);
-    }
+    };
     return socket;
   };
 
@@ -20,8 +20,8 @@ const replaceSocket = () => {
 
   // @ts-ignore
   window.WebSocket = WebSocket;
-}
+};
 
-export default () => {
+export default (): void => {
   replaceSocket();
 };

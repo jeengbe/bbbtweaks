@@ -5,11 +5,13 @@
   "author": "jeengbe",
   "license": "MIT",
   "scripts": {
-    "build": "npx eslint && npx webpack-cli --mode development"
+    "build": "npx eslint --no-error-on-unmatched-pattern --fix ./src/**/*.ts && npx webpack-cli --mode development"
   },
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^14.14.21",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
     "eslint": "^7.18.0",
     "ts-loader": "^8.0.14",
     "ts-node": "^9.1.1",

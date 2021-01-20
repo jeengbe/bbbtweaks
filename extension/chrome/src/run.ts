@@ -1,3 +1,3 @@
-import hijackSocket from "./hijackSocket"
+import hijackSocket from "./hijackSocket";
 
 hijackSocket();
