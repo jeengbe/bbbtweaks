@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "extension/",
+			"problemMatcher": [
+				"$ts-checker5-eslint-webpack"
+			],
+			"group": "build",
+			"label": "npm: build - extension",
+			"detail": "npx webpack-cli --mode development"
+		}
+	]
+}

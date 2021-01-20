@@ -1,0 +1,23 @@
+{
+  "name": "Big Blue Button Tweaks",
+  "version": "1.0",
+  "description": "Various tweaks to Big Blue Button for convenience",
+  "permissions": ["activeTab", "webRequest", "wss://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://test.bigbluebutton.org/*"],
+      "run_at": "document_start",
+      "js": [
+        "inject.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": ["script.js"],
+  // "icons": {
+  //   "16": "16.png",
+  //   "48": "48.png",
+  //   "128": "128.png"
+  // },
+  "manifest_version": 2,
+  "background": { "scripts": ["hot-reload.js"] }
+}
