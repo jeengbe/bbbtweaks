@@ -5,7 +5,7 @@
   "author": "jeengbe",
   "license": "MIT",
   "scripts": {
-    "build": "eslint && npx webpack-cli --mode development"
+    "build": "npx eslint && npx webpack-cli --mode development"
   },
   "dependencies": {},
   "devDependencies": {

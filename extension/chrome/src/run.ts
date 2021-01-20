@@ -1,1 +1,3 @@
-console.log("Hello there!");
+import hijackSocket from "./hijackSocket"
+
+hijackSocket();

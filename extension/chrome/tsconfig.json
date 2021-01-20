@@ -4,10 +4,10 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "inlineSourceMap": false,
-    "baseUrl": "chrome/src",
-    "rootDir": "chrome/src",
+    "baseUrl": "./src",
+    "rootDir": "./src",
     "strict": true,
     "noImplicitReturns": true
   },
-  "include": ["chrome/src/run.ts"]
+  "include": ["./src/run.ts"]
 }
