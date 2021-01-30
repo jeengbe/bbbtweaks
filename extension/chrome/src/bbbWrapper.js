@@ -37,11 +37,12 @@ export default () => {
     }
   });
 
-  window.bbb = {
+  const bbb = {
     _send: sendMessage.bind(this),
 
     // Emoji
     EMOJIS: {
+      CLEAR: "none",
       AWAY: "away",
       RAISE_HAND: "raiseHand",
       UNDECIDED: "neutral",
@@ -61,6 +62,19 @@ export default () => {
           emoji
         ]
       });
+    },
+    WOOP: {
+      _i: 0,
+      _int: null,
+      start: () => {
+        bbb.WOOP._int = setInterval(() => bbb.setEmojiStatus([bbb.EMOJIS.SAD, bbb.EMOJIS.CONFUSED, bbb.EMOJIS.HAPPY][bbb.WOOP._i++ % 3]), 100);
+      },
+      stop: () => {
+        clearInterval(bbb.WOOP._int);
+        bbb.setEmojiStatus(bbb.EMOJIS.CLEAR);
+      }
     }
   };
+
+  window.bbb = bbb;
 };
