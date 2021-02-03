@@ -13,6 +13,7 @@ export const sendMessage = (...packets) => {
 export default () => {
   addOutListener(msg => {
     if (msg.msg === "method" && msg.method === "validateAuthToken") {
+      userID = msg.params[1];
       authPacketID = msg.id;
     }
   });
@@ -29,11 +30,6 @@ export default () => {
     // Bind Socket
     if (msg.msg === "result" && msg.id === authPacketID) {
       bbbSocket = socket;
-    }
-
-    // User ID
-    if (msg.msg === "added" && msg.collection === "users") {
-      userID = msg.fields.userId;
     }
   });
 
@@ -67,7 +63,7 @@ export default () => {
       _i: 0,
       _int: null,
       start: () => {
-        bbb.WOOP._int = setInterval(() => bbb.setEmojiStatus([bbb.EMOJIS.SAD, bbb.EMOJIS.CONFUSED, bbb.EMOJIS.HAPPY][bbb.WOOP._i++ % 3]), 100);
+        bbb.WOOP._int = setInterval(() => bbb.setEmojiStatus([bbb.EMOJIS.SAD, bbb.EMOJIS.CONFUSED, bbb.EMOJIS.HAPPY][bbb.WOOP._i++ % 3]), 150);
       },
       stop: () => {
         clearInterval(bbb.WOOP._int);

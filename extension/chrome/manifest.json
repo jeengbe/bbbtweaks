@@ -5,7 +5,7 @@
   "permissions": ["activeTab", "webRequest", "wss://*/*"],
   "content_scripts": [
     {
-      "matches": ["https://test.bigbluebutton.org/*"],
+      "matches": ["https://*.bg-schorndorf.de/*"],
       "run_at": "document_start",
       "js": [
         "inject.js"

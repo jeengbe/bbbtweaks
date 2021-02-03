@@ -9,13 +9,13 @@ const settingsChangeListener = msg => {
 };
 
 export default () => {
-  addOutListener(msg => {
-    console.log("OUT", msg);
-  });
+  // addOutListener(msg => {
+  //   console.log("OUT", msg);
+  // });
 
-  addInListener(msg => {
-    console.log("IN", msg);
-  });
+  // addInListener(msg => {
+  //   console.log("IN", msg);
+  // });
 
   addInListener(msg => {
     if (msg.msg === "added" && msg.collection === "meetings") {

@@ -10,13 +10,22 @@ const replaceSocket = () => {
 
     const fakeSocket = {};
     for (const p in socket) {
-      fakeSocket[p] = socket[p];
+      if (typeof socket[p] === "function") {
+        fakeSocket[p] = socket[p].bind(socket);
+      } else {
+        fakeSocket[p] = socket[p];
+      }
     }
 
     fakeSocket.send = msg => {
       if (typeof msg === "string") {
         let send = true;
-        const packets = JSON.parse(msg);
+        let packets;
+        try {
+          packets = JSON.parse(msg);
+        } catch (e) {
+          return socket.send(msg);
+        }
         const packetsOut = [];
 
         packets.forEach(p => {
@@ -29,7 +38,7 @@ const replaceSocket = () => {
           return socket.send(JSON.stringify(packetsOut));
         }
       } else {
-        console.error("Send raw data: ", msg);
+        console.log("Send raw data: ", msg);
         return socket.send(msg);
       }
     };
@@ -53,7 +62,7 @@ const replaceSocket = () => {
 
         data.data = "a" + JSON.stringify(packetsIn);
       }
-      if (send) {
+      if (send && typeof fakeSocket.onmessage === "function") {
         fakeSocket.onmessage(data);
       }
     };
